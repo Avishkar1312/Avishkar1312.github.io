@@ -103,6 +103,13 @@ img{max-width:100%; display:block}
 }
 .nav-toggle{ display:none; }
 
+.avatar{
+  width:150px; height:150px; border-radius:50%; object-fit:cover;
+  border:2px solid rgba(226,147,78,.35);
+  box-shadow:0 0 0 6px rgba(226,147,78,.06);
+  margin-bottom:22px;
+}
+
 /* Language switch -- English active by default, matches the markup's default state. */
 .lang-toggle{
   display:flex; border:1px solid rgba(255,255,255,.16); border-radius:6px; overflow:hidden;
@@ -116,8 +123,7 @@ img{max-width:100%; display:block}
 .lang-toggle button[aria-pressed="true"]{ background:var(--accent); color:var(--accent-ink); }
 .lang-toggle button:not([aria-pressed="true"]):hover{ color:#fff; background:rgba(255,255,255,.06); }
 
-/* System status -- a small console readout standing in for a second portrait; the real
-   photo now sits beside the About copy. Decorative, but true to the "control panel" idea. */
+/* System status -- a small decorative console readout, true to the "control panel" idea. */
 .status-panel{
   border:1px solid rgba(255,255,255,.1); border-radius:8px;
   padding:14px 16px; margin-bottom:26px;
@@ -282,16 +288,6 @@ main{
 .body-text strong{ color:var(--ink); font-weight:600; }
 .resume-inline{ margin-top:4px; }
 
-/* ---------------- about layout ---------------- */
-.about-layout{
-  display:grid; grid-template-columns:1fr auto; gap:48px; align-items:start;
-}
-.about-photo{
-  width:270px; height:340px; object-fit:cover; border-radius:14px;
-  border:2px solid rgba(226,147,78,.3);
-  box-shadow:0 0 0 6px rgba(226,147,78,.05), var(--shadow);
-}
-
 /* ---------------- projects ---------------- */
 .project-grid{
   display:grid;
@@ -378,6 +374,7 @@ main{
   }
   .sidebar-grid{ mask-image:none; }
   .sidebar-inner{ padding:24px 24px 20px; }
+  .avatar{ width:100px; height:100px; margin-bottom:16px; }
   .name{ font-size:1.32rem; }
   .tagline{ max-width:none; }
   .status-panel{ margin-bottom:20px; }
@@ -405,11 +402,6 @@ main{
   .section{ padding:52px 22px; }
   .section-about{ padding-top:52px; }
   .lede{ font-size:1.28rem; }
-
-  .about-layout{ grid-template-columns:1fr; gap:24px; }
-  .about-photo{
-    order:-1; width:180px; height:225px; margin:0 auto;
-  }
 
   .project-grid{ grid-template-columns:1fr; }
   .project-featured .project-media{ aspect-ratio:16/9; }

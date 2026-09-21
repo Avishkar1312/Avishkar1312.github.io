@@ -32,20 +32,7 @@
         </button>
       </div>
 
-      <!-- SYSTEM STATUS -- a small console-style readout in place of a second portrait;
-           the portrait itself now lives beside the About copy. Purely decorative. -->
-      <div class="status-panel" aria-hidden="true">
-        <div class="status-head">
-          <span lang="en">System Status</span>
-          <span lang="ja" hidden>システム状態</span>
-        </div>
-        <ul class="status-list">
-          <li><span class="status-dot"></span><span class="status-label"><span lang="en">Perception</span><span lang="ja" hidden>知覚</span></span><span class="status-val"><span lang="en">Online</span><span lang="ja" hidden>オンライン</span></span></li>
-          <li><span class="status-dot"></span><span class="status-label"><span lang="en">Planning</span><span lang="ja" hidden>計画</span></span><span class="status-val"><span lang="en">Online</span><span lang="ja" hidden>オンライン</span></span></li>
-          <li><span class="status-dot"></span><span class="status-label"><span lang="en">Control</span><span lang="ja" hidden>制御</span></span><span class="status-val"><span lang="en">Online</span><span lang="ja" hidden>オンライン</span></span></li>
-          <li><span class="status-dot status-dot-active"></span><span class="status-label"><span lang="en">Learning</span><span lang="ja" hidden>学習</span></span><span class="status-val status-val-active"><span lang="en">Active</span><span lang="ja" hidden>稼働中</span></span></li>
-        </ul>
-      </div>
+      <img class="avatar" src="assets/img/avatar.jpg" alt="Portrait of Avishkar Bahirwar" width="150" height="150">
 
       <h1 class="name">Avishkar Bahirwar</h1>
       <p class="role">
@@ -64,6 +51,20 @@
         <dd lang="en">Indian Institute of Technology Bombay<br>2023 – 2027 · CPI 8.8</dd>
         <dd lang="ja" hidden>インド工科大学ボンベイ校<br>2023年 – 2027年・CPI 8.8</dd>
       </dl>
+
+      <!-- SYSTEM STATUS -- a small console-style readout, purely decorative. -->
+      <div class="status-panel" aria-hidden="true">
+        <div class="status-head">
+          <span lang="en">System Status</span>
+          <span lang="ja" hidden>システム状態</span>
+        </div>
+        <ul class="status-list">
+          <li><span class="status-dot"></span><span class="status-label"><span lang="en">Perception</span><span lang="ja" hidden>知覚</span></span><span class="status-val"><span lang="en">Online</span><span lang="ja" hidden>オンライン</span></span></li>
+          <li><span class="status-dot"></span><span class="status-label"><span lang="en">Planning</span><span lang="ja" hidden>計画</span></span><span class="status-val"><span lang="en">Online</span><span lang="ja" hidden>オンライン</span></span></li>
+          <li><span class="status-dot"></span><span class="status-label"><span lang="en">Control</span><span lang="ja" hidden>制御</span></span><span class="status-val"><span lang="en">Online</span><span lang="ja" hidden>オンライン</span></span></li>
+          <li><span class="status-dot status-dot-active"></span><span class="status-label"><span lang="en">Learning</span><span lang="ja" hidden>学習</span></span><span class="status-val status-val-active"><span lang="en">Active</span><span lang="ja" hidden>稼働中</span></span></li>
+        </ul>
+      </div>
 
       <nav class="sidenav" id="sideNav">
         <a href="#about"><span lang="en">About</span><span lang="ja" hidden>概要</span></a>
@@ -100,25 +101,19 @@
 
     <!-- ABOUT -->
     <section id="about" class="section section-about">
-      <div class="about-layout">
-        <div class="about-text">
-          <p class="eyebrow" lang="en">01 · About</p>
-          <p class="eyebrow" lang="ja" hidden>01・自己紹介</p>
+      <p class="eyebrow" lang="en">01 · About</p>
+      <p class="eyebrow" lang="ja" hidden>01・自己紹介</p>
 
-          <p class="lede" lang="en">I'm a robotics engineer building the perception, learning, and decision-making that let robots operate autonomously — from mobile robots and robotic arms to multi-robot systems deployed in real-world environments.</p>
-          <p class="lede" lang="ja" hidden>私はロボティクスエンジニアとして、移動ロボットからロボットアーム、実環境に展開されるマルチロボットシステムまで、ロボットが自律的に動作するための知覚・学習・意思決定の仕組みを構築しています。</p>
+      <p class="lede" lang="en">I'm a robotics engineer building the perception, learning, and decision-making that let robots operate autonomously — from mobile robots and robotic arms to multi-robot systems deployed in real-world environments.</p>
+      <p class="lede" lang="ja" hidden>私はロボティクスエンジニアとして、移動ロボットからロボットアーム、実環境に展開されるマルチロボットシステムまで、ロボットが自律的に動作するための知覚・学習・意思決定の仕組みを構築しています。</p>
 
-          <p class="body-text" lang="en">I'm a Bachelors student in Civil Engineering at IIT Bombay (minoring in AI &amp; Data Science and Robotics), but most of my time goes into <strong>robotics and intelligent autonomous systems</strong>. I lead a 40+ member robotics team, where I work across <strong>perception, sensor fusion, planning, control, and reinforcement learning</strong> to build autonomous robotic systems. My work spans LiDAR and camera-based perception, EKF-based state estimation, SLAM, multi-robot navigation, and RL-based robot learning, with systems developed and deployed using ROS2. I've carried this experience across <strong>autonomous vehicles, robotic manipulation, warehouse robotics, and safety-critical scenario generation</strong> through Team SeDriCa, Mercedes-Benz Research, Armstrong Dematic, and the Roboracer autonomous racing competition in South Korea.</p>
-          <p class="body-text" lang="ja" hidden>インド工科大学ボンベイ校で土木工学を専攻する学部生です(副専攻として人工知能・データサイエンスおよびロボティクスを履修)が、時間の大半は<strong>ロボティクスと知能自律システム</strong>の研究開発に費やしています。40名以上のロボティクスチームを率い、<strong>知覚・センサーフュージョン・計画・制御・強化学習</strong>を横断して自律ロボットシステムを構築しています。LiDARとカメラによる知覚、EKFによる状態推定、SLAM、マルチロボットナビゲーション、強化学習によるロボット学習まで幅広く手掛け、いずれもROS2上で開発・実装しています。Team SeDriCa、Mercedes-Benz Research、Armstrong Dematic、そして韓国で開催されたRoboracer自動運転レース大会を通じて、<strong>自動運転車両、ロボットマニピュレーション、倉庫ロボティクス、安全性が問われるシナリオ生成</strong>に至るまで、幅広い経験を積んできました。</p>
+      <p class="body-text" lang="en">I'm a Bachelors student in Civil Engineering at IIT Bombay (minoring in AI &amp; Data Science and Robotics), but most of my time goes into <strong>robotics and intelligent autonomous systems</strong>. I lead a 40+ member robotics team, where I work across <strong>perception, sensor fusion, planning, control, and reinforcement learning</strong> to build autonomous robotic systems. My work spans LiDAR and camera-based perception, EKF-based state estimation, SLAM, multi-robot navigation, and RL-based robot learning, with systems developed and deployed using ROS2. I've carried this experience across <strong>autonomous vehicles, robotic manipulation, warehouse robotics, and safety-critical scenario generation</strong> through Team SeDriCa, Mercedes-Benz Research, Armstrong Dematic, and the Roboracer autonomous racing competition in South Korea.</p>
+      <p class="body-text" lang="ja" hidden>インド工科大学ボンベイ校で土木工学を専攻する学部生です(副専攻として人工知能・データサイエンスおよびロボティクスを履修)が、時間の大半は<strong>ロボティクスと知能自律システム</strong>の研究開発に費やしています。40名以上のロボティクスチームを率い、<strong>知覚・センサーフュージョン・計画・制御・強化学習</strong>を横断して自律ロボットシステムを構築しています。LiDARとカメラによる知覚、EKFによる状態推定、SLAM、マルチロボットナビゲーション、強化学習によるロボット学習まで幅広く手掛け、いずれもROS2上で開発・実装しています。Team SeDriCa、Mercedes-Benz Research、Armstrong Dematic、そして韓国で開催されたRoboracer自動運転レース大会を通じて、<strong>自動運転車両、ロボットマニピュレーション、倉庫ロボティクス、安全性が問われるシナリオ生成</strong>に至るまで、幅広い経験を積んできました。</p>
 
-          <a class="btn btn-outline resume-inline" href="assets/Avishkar_Bahirwar_Resume.pdf" download>
-            <span lang="en">Download full résumé (PDF)</span>
-            <span lang="ja" hidden>履歴書をダウンロード (PDF)</span>
-          </a>
-        </div>
-
-        <img class="about-photo" src="assets/img/profile.jpg" alt="Portrait of Avishkar Bahirwar" loading="lazy">
-      </div>
+      <a class="btn btn-outline resume-inline" href="assets/Avishkar_Bahirwar_Resume.pdf" download>
+        <span lang="en">Download full résumé (PDF)</span>
+        <span lang="ja" hidden>履歴書をダウンロード (PDF)</span>
+      </a>
     </section>
 
     <!-- EXPERIENCE -->
@@ -132,9 +127,7 @@
 
         <article class="project">
           <div class="project-media">
-            <video controls preload="metadata" poster="assets/img/full-scale-vehicle.jpg">
-              <source src="assets/video/full-scale-vehicle.mp4" type="video/mp4">
-            </video>
+            <img src="assets/img/exp-sedrica.jpg" alt="Team SeDriCa members holding the Indian flag" loading="lazy">
           </div>
           <div class="project-body">
             <span class="project-tag">Team SeDriCa <span lang="en">· Sep 2024 – Present</span><span lang="ja" hidden>・2024年9月 – 現在</span></span>
@@ -147,17 +140,7 @@
 
         <article class="project">
           <div class="project-media project-media-diagram">
-            <svg class="scenario-diagram" viewBox="0 0 320 200" role="img" aria-label="Stylised scenario-generation road network diagram">
-              <path d="M10 150 C 70 150, 90 60, 150 60 S 230 150, 290 150" fill="none" stroke="#C9C2B4" stroke-width="3" stroke-linecap="round"/>
-              <path d="M150 60 C 170 30, 210 20, 250 35" fill="none" stroke="#C9C2B4" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 9" stroke-linejoin="round"/>
-              <circle cx="10" cy="150" r="5" fill="#3E4045"/>
-              <circle cx="150" cy="60" r="5" fill="#3E4045"/>
-              <circle cx="290" cy="150" r="5" fill="#3E4045"/>
-              <circle cx="250" cy="35" r="7" fill="none" stroke="#E2934E" stroke-width="2.5"/>
-              <circle cx="250" cy="35" r="2.5" fill="#E2934E"/>
-              <circle cx="150" cy="60" r="16" fill="none" stroke="#E2934E" stroke-width="1.5" opacity=".55"/>
-              <circle cx="150" cy="60" r="24" fill="none" stroke="#E2934E" stroke-width="1" opacity=".3"/>
-            </svg>
+            <img src="assets/img/exp-mbrdi.png" alt="Mercedes-Benz Research scenario-generation architecture: a 5-layer ODD structure feeding a scenario generation toolkit, evaluated by a criticality metric and simulated in CARLA" loading="lazy">
           </div>
           <div class="project-body">
             <span class="project-tag">Mercedes-Benz Research <span lang="en">· Aug 2025 – Apr 2026</span><span lang="ja" hidden>・2025年8月 – 2026年4月</span></span>
@@ -169,10 +152,8 @@
         </article>
 
         <article class="project">
-          <div class="project-media">
-            <video controls preload="metadata">
-              <source src="assets/video/armstrong-full-demo.webm" type="video/webm">
-            </video>
+          <div class="project-media project-media-diagram">
+            <img src="assets/img/exp-armstrong-logo.png" alt="Armstrong Dematic logo" loading="lazy">
           </div>
           <div class="project-body">
             <span class="project-tag">Armstrong Dematic <span lang="en">· Mar 2026 – May 2026</span><span lang="ja" hidden>・2026年3月 – 2026年5月</span></span>
