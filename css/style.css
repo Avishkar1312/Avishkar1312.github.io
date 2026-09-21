@@ -288,6 +288,16 @@ main{
 .body-text strong{ color:var(--ink); font-weight:600; }
 .resume-inline{ margin-top:4px; }
 
+/* ---------------- about layout ---------------- */
+.about-layout{
+  display:grid; grid-template-columns:1fr 320px; gap:48px; align-items:start;
+}
+.about-photo{
+  width:320px; height:320px; object-fit:cover; border-radius:14px;
+  border:2px solid rgba(226,147,78,.3);
+  box-shadow:0 0 0 6px rgba(226,147,78,.05), var(--shadow);
+}
+
 /* ---------------- projects ---------------- */
 .project-grid{
   display:grid;
@@ -402,6 +412,9 @@ main{
   .section{ padding:52px 22px; }
   .section-about{ padding-top:52px; }
   .lede{ font-size:1.28rem; }
+
+  .about-layout{ grid-template-columns:1fr; gap:24px; }
+  .about-photo{ order:-1; width:200px; height:200px; margin:0 auto; }
 
   .project-grid{ grid-template-columns:1fr; }
   .project-featured .project-media{ aspect-ratio:16/9; }
