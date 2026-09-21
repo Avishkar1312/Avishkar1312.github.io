@@ -4,9 +4,41 @@
 (function () {
   "use strict";
 
-  // Footer year
-  var yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  // Footer year (one span per language, both kept in sync)
+  var year = String(new Date().getFullYear());
+  ["year-en", "year-ja"].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = year;
+  });
+
+  // ---------------- language toggle (EN default, JA opt-in) ----------------
+  var TITLES = {
+    en: "Avishkar Bahirwar — Robotics & Autonomous Systems",
+    ja: "Avishkar Bahirwar — ロボティクス・自律システム"
+  };
+  var btnEn = document.getElementById("langEn");
+  var btnJa = document.getElementById("langJa");
+
+  function setLang(lang) {
+    // Scoped to body's descendants only -- <html lang="en"> itself matches
+    // [lang='en'] too, and hiding the document root blanks the entire page.
+    document.body.querySelectorAll("[lang='en'], [lang='ja']").forEach(function (el) {
+      el.hidden = el.getAttribute("lang") !== lang;
+    });
+    if (btnEn) btnEn.setAttribute("aria-pressed", String(lang === "en"));
+    if (btnJa) btnJa.setAttribute("aria-pressed", String(lang === "ja"));
+    document.documentElement.setAttribute("lang", lang);
+    document.title = TITLES[lang] || TITLES.en;
+    try { localStorage.setItem("site-lang", lang); } catch (e) {}
+  }
+
+  if (btnEn && btnJa) {
+    btnEn.addEventListener("click", function () { setLang("en"); });
+    btnJa.addEventListener("click", function () { setLang("ja"); });
+    var saved = null;
+    try { saved = localStorage.getItem("site-lang"); } catch (e) {}
+    if (saved === "ja") setLang("ja");
+  }
 
   // Mobile sidebar-nav toggle
   var toggle = document.getElementById("navToggle");

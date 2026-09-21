@@ -39,11 +39,12 @@ body{
   margin:0;
   background:var(--paper);
   color:var(--ink);
-  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  font-family:"IBM Plex Sans","Noto Sans JP",system-ui,-apple-system,sans-serif;
   font-size:16px;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
+:lang(ja){ line-height:1.85; } /* Japanese sets more comfortably a touch looser */
 
 .skip-link{
   position:absolute; left:-999px; top:0; background:var(--accent); color:var(--accent-ink);
@@ -55,6 +56,11 @@ a{color:inherit}
 :focus-visible{outline:2px solid var(--accent); outline-offset:2px}
 
 img{max-width:100%; display:block}
+
+/* i18n: every translated string ships twice, [lang="en"] + [lang="ja"], as siblings.
+   The `hidden` attribute (not a CSS class) marks which one is inactive -- JS toggles it
+   directly via .hidden, so there's nothing here to fight a specificity battle with. */
+[hidden]{ display:none !important; }
 
 /* ---------------- layout shell ---------------- */
 .shell{
@@ -91,14 +97,57 @@ img{max-width:100%; display:block}
   padding: 40px 32px 28px;
 }
 
+.top-row{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:24px;
+}
 .nav-toggle{ display:none; }
 
-.avatar{
-  width:168px; height:168px; border-radius:50%; object-fit:cover;
-  border:2px solid rgba(226,147,78,.35);
-  box-shadow:0 0 0 6px rgba(226,147,78,.06);
-  margin-bottom:22px;
+/* Language switch -- English active by default, matches the markup's default state. */
+.lang-toggle{
+  display:flex; border:1px solid rgba(255,255,255,.16); border-radius:6px; overflow:hidden;
 }
+.lang-toggle button{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600; letter-spacing:.02em;
+  padding:7px 11px; background:transparent; color:var(--on-dark-muted);
+  border:none; cursor:pointer; transition:background .12s, color .12s;
+}
+.lang-toggle button + button{ border-left:1px solid rgba(255,255,255,.16); }
+.lang-toggle button[aria-pressed="true"]{ background:var(--accent); color:var(--accent-ink); }
+.lang-toggle button:not([aria-pressed="true"]):hover{ color:#fff; background:rgba(255,255,255,.06); }
+
+/* System status -- a small console readout standing in for a second portrait; the real
+   photo now sits beside the About copy. Decorative, but true to the "control panel" idea. */
+.status-panel{
+  border:1px solid rgba(255,255,255,.1); border-radius:8px;
+  padding:14px 16px; margin-bottom:26px;
+  background:rgba(255,255,255,.02);
+}
+.status-head{
+  font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--on-dark-faint); margin-bottom:10px;
+}
+.status-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+.status-list li{ display:flex; align-items:center; gap:9px; }
+.status-dot{
+  width:6px; height:6px; border-radius:50%; background:#4CA97A; flex:0 0 auto;
+  box-shadow:0 0 0 3px rgba(76,169,122,.18);
+}
+.status-dot-active{
+  background:var(--accent); box-shadow:0 0 0 3px rgba(226,147,78,.22);
+  animation:status-pulse 1.8s ease-in-out infinite;
+}
+@keyframes status-pulse{
+  0%,100%{ opacity:1 } 50%{ opacity:.45 }
+}
+.status-label{
+  font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:var(--on-dark-muted); flex:1 1 auto;
+}
+.status-val{
+  font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--on-dark-faint);
+}
+.status-val-active{ color:var(--accent); }
 
 .name{
   font-family:"IBM Plex Mono",monospace;
@@ -233,22 +282,15 @@ main{
 .body-text strong{ color:var(--ink); font-weight:600; }
 .resume-inline{ margin-top:4px; }
 
-/* ---------------- timeline (experience) ---------------- */
-.timeline{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0; }
-.tl-item{
-  display:grid; grid-template-columns:160px 1fr; gap:24px;
-  padding:26px 0; border-top:1px solid var(--rule-soft);
+/* ---------------- about layout ---------------- */
+.about-layout{
+  display:grid; grid-template-columns:1fr auto; gap:48px; align-items:start;
 }
-.tl-item:first-child{ border-top:none; padding-top:0; }
-.tl-when{
-  font-family:"IBM Plex Mono",monospace; font-size:.8rem; color:var(--faint);
-  padding-top:3px; letter-spacing:.01em;
+.about-photo{
+  width:270px; height:340px; object-fit:cover; border-radius:14px;
+  border:2px solid rgba(226,147,78,.3);
+  box-shadow:0 0 0 6px rgba(226,147,78,.05), var(--shadow);
 }
-.tl-body h3{
-  margin:0 0 8px; font-size:1.04rem; font-weight:600; color:var(--ink); line-height:1.4;
-}
-.tl-org{ font-weight:400; color:var(--muted); }
-.tl-body p{ margin:0; color:var(--ink-2); font-size:.95rem; line-height:1.7; }
 
 /* ---------------- projects ---------------- */
 .project-grid{
@@ -280,6 +322,7 @@ main{
 }
 .project-media-diagram{ background:#fff; }
 .project-media-diagram img{ object-fit:contain; padding:22px; }
+.project-media-diagram svg{ width:100%; height:100%; padding:22px; box-sizing:border-box; }
 
 .project-body{ padding:20px 22px 24px; }
 .project-tag{
@@ -335,14 +378,13 @@ main{
   }
   .sidebar-grid{ mask-image:none; }
   .sidebar-inner{ padding:24px 24px 20px; }
-  .avatar{ width:96px; height:96px; margin-bottom:16px; }
   .name{ font-size:1.32rem; }
   .tagline{ max-width:none; }
+  .status-panel{ margin-bottom:20px; }
 
   .nav-toggle{
     display:flex; flex-direction:column; justify-content:center; gap:5px;
-    position:absolute; top:24px; right:24px; z-index:2;
-    width:38px; height:38px; border-radius:7px;
+    width:38px; height:38px; border-radius:7px; flex:0 0 auto;
     background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14);
     cursor:pointer;
   }
@@ -364,8 +406,10 @@ main{
   .section-about{ padding-top:52px; }
   .lede{ font-size:1.28rem; }
 
-  .tl-item{ grid-template-columns:1fr; gap:6px; }
-  .tl-when{ padding-top:0; }
+  .about-layout{ grid-template-columns:1fr; gap:24px; }
+  .about-photo{
+    order:-1; width:180px; height:225px; margin:0 auto;
+  }
 
   .project-grid{ grid-template-columns:1fr; }
   .project-featured .project-media{ aspect-ratio:16/9; }
