@@ -209,6 +209,9 @@ main{
 .section + .section{ border-top:1px solid var(--rule-soft); }
 .section-about{ padding-top:88px; }
 
+/* Projects is a card grid, not prose — it earns a wider column than the reading sections. */
+#projects{ max-width:1240px; }
+
 .eyebrow{
   font-family:"IBM Plex Mono",monospace;
   font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
@@ -253,7 +256,7 @@ main{
 /* ---------------- projects ---------------- */
 .project-grid{
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
+  grid-template-columns:repeat(3, 1fr);
   align-items:stretch;
   gap:22px;
 }
@@ -269,8 +272,6 @@ main{
 .project-body{ display:flex; flex-direction:column; flex:1 1 auto; }
 .project-featured{ grid-column:1 / -1; }
 .project-featured .project-media{ aspect-ratio:21/9; }
-.project-grid > .project:last-child:nth-child(odd){ grid-column:1 / -1; }
-.project-grid > .project:last-child:nth-child(odd) .project-media{ aspect-ratio:21/9; }
 
 .project-media{
   aspect-ratio:16/9;
@@ -326,6 +327,11 @@ main{
 }
 
 /* ---------------- responsive ---------------- */
+@media (max-width: 1280px){
+  #projects{ max-width:900px; }
+  .project-grid{ grid-template-columns:repeat(2, 1fr); }
+}
+
 @media (max-width: 900px){
   .shell{ flex-direction:column; }
   .sidebar{
