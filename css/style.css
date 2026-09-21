@@ -27,7 +27,7 @@
   --rule:#E4E0D6;
   --rule-soft:#EEEAE0;
 
-  --sidebar-w: 340px;
+  --sidebar-w: 400px;
   --shadow: 0 1px 2px rgba(24,26,29,.05), 0 6px 20px rgba(24,26,29,.04);
 }
 
@@ -94,7 +94,7 @@ img{max-width:100%; display:block}
 .nav-toggle{ display:none; }
 
 .avatar{
-  width:132px; height:132px; border-radius:50%; object-fit:cover;
+  width:168px; height:168px; border-radius:50%; object-fit:cover;
   border:2px solid rgba(226,147,78,.35);
   box-shadow:0 0 0 6px rgba(226,147,78,.06);
   margin-bottom:22px;
@@ -202,15 +202,12 @@ main{
   min-width:0;
 }
 .section{
-  max-width:880px;
+  max-width:1240px;
   margin:0 auto;
-  padding: 76px 48px;
+  padding: 76px 56px;
 }
 .section + .section{ border-top:1px solid var(--rule-soft); }
 .section-about{ padding-top:88px; }
-
-/* Projects is a card grid, not prose — it earns a wider column than the reading sections. */
-#projects{ max-width:1240px; }
 
 .eyebrow{
   font-family:"IBM Plex Mono",monospace;
@@ -322,13 +319,12 @@ main{
 .contact-links{ display:flex; flex-wrap:wrap; gap:12px; }
 
 .footer{
-  max-width:880px; margin:0 auto; padding: 30px 48px 60px;
+  max-width:1240px; margin:0 auto; padding: 30px 56px 60px;
   color:var(--faint); font-size:.82rem; font-family:"IBM Plex Mono",monospace;
 }
 
 /* ---------------- responsive ---------------- */
-@media (max-width: 1280px){
-  #projects{ max-width:900px; }
+@media (max-width: 1400px){
   .project-grid{ grid-template-columns:repeat(2, 1fr); }
 }
 
